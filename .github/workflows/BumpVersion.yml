@@ -1,0 +1,61 @@
+name: Bump version
+
+on:
+  push:
+    branches:
+      - main
+
+    paths:
+      - "**.ts"
+      - "**.js"
+      - "**.tsx"
+      - "**.jsx"
+      - "**.css"
+
+jobs:
+  bump-version:
+    runs-on: ubuntu-latest
+    permissions: write-all
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20.10.0
+      - uses: pnpm/action-setup@v2
+        with:
+          version: latest
+      - name: Setup git
+        run: |
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+          git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+
+      - name: Bump version
+        run: |
+          COMMIT_MESSAGE="$(git log --format=%B -n 1 ${{ github.sha }})"
+          if [[ "$COMMIT_MESSAGE" == *fix:* || "$COMMIT_MESSAGE" == *hotfix:* || "$COMMIT_MESSAGE" == *add:* || "$COMMIT_MESSAGE" == *impl:* ]]; then
+            echo "Patch Bump Needed."
+            pnpm version patch
+          elif [[ "$COMMIT_MESSAGE" == *Fix:* || "$COMMIT_MESSAGE" == *Hotfix:* || "$COMMIT_MESSAGE" == *Add:* || "$COMMIT_MESSAGE" == *Impl:* ]]; then
+            echo "Patch Bump Needed."
+            pnpm version patch
+          elif [[ "$COMMIT_MESSAGE" == *feature:* || "$COMMIT_MESSAGE" == *change:* ]]; then
+            echo "Minor Bump Needed."
+            pnpm version minor
+          elif [[ "$COMMIT_MESSAGE" == *Feature:* || "$COMMIT_MESSAGE" == *Change:* ]]; then
+            echo "Minor Bump Needed."
+            pnpm version minor
+          elif [[ "$COMMIT_MESSAGE" == *breaking:* || "$COMMIT_MESSAGE" == *major:* || "$COMMIT_MESSAGE" == *release:* || "$COMMIT_MESSAGE" == *rel:* ]]; then
+            echo "Major Bump Needed."
+            pnpm version major
+          elif [[ "$COMMIT_MESSAGE" == *Breaking:* || "$COMMIT_MESSAGE" == *Major:* || "$COMMIT_MESSAGE" == *Release:* || "$COMMIT_MESSAGE" == *Rel:* ]]; then
+            echo "Major Bump Needed."
+            pnpm version major
+          else
+            echo "No Version Bump Needed."
+          fi
+
+      - name: push
+        run: |
+          git push -f --follow-tags origin main
+          git push -f --follow-tags origin main:production

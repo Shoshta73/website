@@ -1,0 +1,46 @@
+{
+  "name": "website",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite dev --open",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "test": "pnpm run test:integration && pnpm run test:unit",
+    "lint": "eslint . && prettier --check **.{js,jsx,ts,tsx} ",
+    "lint:check": "eslint .",
+    "lint-style:check": "stylelint ./**/*.css --mw 0",
+    "format": "prettier --write **.{js,jsx,ts,tsx}",
+    "format:check": "prettier --check **.{js,jsx,ts,tsx}",
+    "test:integration": "playwright test",
+    "test:unit": "vitest",
+    "prepare": "husky install"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.10.5",
+    "@types/react": "^18.2.46",
+    "@types/react-dom": "^18.2.18",
+    "@typescript-eslint/eslint-plugin": "^6.16.0",
+    "@typescript-eslint/parser": "^6.16.0",
+    "@vitejs/plugin-react-swc": "^3.5.0",
+    "autoprefixer": "^10.4.16",
+    "eslint": "^8.56.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.5",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.2.0",
+    "postcss": "^8.4.32",
+    "prettier": "^3.1.1",
+    "stylelint": "^16.1.0",
+    "stylelint-config-standard": "^36.0.0",
+    "tailwindcss": "^3.4.0",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.10"
+  },
+  "dependencies": {
+    "lucide-react": "^0.303.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.21.1"
+  }
+}

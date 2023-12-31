@@ -2,7 +2,7 @@
   z-index: 100;
   width: 100%;
   height: 60px;
-  position: absolute;
+  position: fixed;
   background-color: var(--bg-h);
   display: flex;
 }
@@ -48,7 +48,7 @@
 .links-small-screen {
   display: flex;
   flex-direction: column;
-  position: absolute;
+  position: fixed;
   z-index: 101;
   width: 100%;
   height: calc(100vh - 60px);

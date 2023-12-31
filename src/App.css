@@ -8,6 +8,10 @@
   min-height: 100vh;
 }
 
+.app-content-container {
+  flex-grow: 1;
+}
+
 body {
   padding: 0;
   margin: 0;

@@ -19,5 +19,6 @@ jobs:
         with:
           version: latest
       - run: |
+          pnpm install
           pnpm run lint:check
           pnpm run lint-style:check

@@ -1,6 +1,7 @@
 {
   "name": "website",
-  "version": "0.0.0",
+  "version": "0.1.0",
+  "type": "module",
   "scripts": {
     "dev": "vite dev --open",
     "build": "tsc && vite build",
@@ -9,6 +10,7 @@
     "lint": "eslint . && prettier --check **.{js,jsx,ts,tsx} ",
     "lint:check": "eslint .",
     "lint-style:check": "stylelint ./**/*.css --mw 0",
+    "lint-style:fix": "stylelint ./**/*.css --fix",
     "format": "prettier --write **.{js,jsx,ts,tsx}",
     "format:check": "prettier --check **.{js,jsx,ts,tsx}",
     "test:integration": "playwright test",

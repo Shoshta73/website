@@ -1,0 +1,26 @@
+.home {
+  width: 100%;
+  align-items: center;
+}
+
+.about {
+  width: 100%;
+  height: calc(100vh - 100px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: var(--fg);
+}
+
+.about h2 {
+  font-size: 80px;
+  color: var(--yellow);
+  height: 50px;
+}
+
+.about .prompt {
+  width: 60%;
+  font-size: 30px;
+}

@@ -4,14 +4,7 @@ on:
   push:
     branches:
       - main
-
-    paths:
-      - "**.ts"
-      - "**.js"
-      - "**.tsx"
-      - "**.jsx"
-      - "**.css"
-
+      
 jobs:
   bump-version:
     runs-on: ubuntu-latest
@@ -39,10 +32,10 @@ jobs:
           elif [[ "$COMMIT_MESSAGE" == *Fix:* || "$COMMIT_MESSAGE" == *Hotfix:* || "$COMMIT_MESSAGE" == *Add:* || "$COMMIT_MESSAGE" == *Impl:* ]]; then
             echo "Patch Bump Needed."
             pnpm version patch
-          elif [[ "$COMMIT_MESSAGE" == *feature:* || "$COMMIT_MESSAGE" == *change:* ]]; then
+          elif [[ "$COMMIT_MESSAGE" == *feature:* || "$COMMIT_MESSAGE" == *feat:* || "$COMMIT_MESSAGE" == *change:* ]]; then
             echo "Minor Bump Needed."
             pnpm version minor
-          elif [[ "$COMMIT_MESSAGE" == *Feature:* || "$COMMIT_MESSAGE" == *Change:* ]]; then
+          elif [[ "$COMMIT_MESSAGE" == *Feature:* || "$COMMIT_MESSAGE" == *Feat:* || "$COMMIT_MESSAGE" == *Change:* ]]; then
             echo "Minor Bump Needed."
             pnpm version minor
           elif [[ "$COMMIT_MESSAGE" == *breaking:* || "$COMMIT_MESSAGE" == *major:* || "$COMMIT_MESSAGE" == *release:* || "$COMMIT_MESSAGE" == *rel:* ]]; then

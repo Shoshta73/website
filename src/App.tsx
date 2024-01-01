@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import { Navbar, Footer } from "@Components";
-import { Home } from "@Pages";
+import { Home, Projects } from "@Pages";
 
 import "./App.css";
 
@@ -38,6 +38,14 @@ export default function App() {
               <LayoutNoSpacer>
                 <Home />
               </LayoutNoSpacer>
+            }
+          />
+          <Route
+            path="/projects"
+            element={
+              <LayoutSpacer>
+                <Projects />
+              </LayoutSpacer>
             }
           />
         </Routes>

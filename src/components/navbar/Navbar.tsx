@@ -39,6 +39,13 @@ const Links = ({ location }: { location: string }) => {
       <div className={"link-box" + (location === "/" ? " current-link" : "")}>
         <Link to="/">Home</Link>
       </div>
+      <div
+        className={
+          "link-box" + (location === "/projects" ? " current-link" : "")
+        }
+      >
+        <Link to="/projects">Projects</Link>
+      </div>
     </div>
   );
 };

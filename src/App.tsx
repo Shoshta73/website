@@ -6,10 +6,21 @@ import { Home } from "@Pages";
 
 import "./App.css";
 
-const Layout = ({ children }: { children: ReactNode }) => {
+const LayoutNoSpacer = ({ children }: { children: ReactNode }) => {
   return (
     <>
       <Navbar />
+      <div className="app-content-container">{children}</div>
+      <Footer />
+    </>
+  );
+};
+
+const LayoutSpacer = ({ children }: { children: ReactNode }) => {
+  return (
+    <>
+      <Navbar />
+      <div className="app-spacer"></div>
       <div className="app-content-container">{children}</div>
       <Footer />
     </>
@@ -24,9 +35,9 @@ export default function App() {
           <Route
             path="/"
             element={
-              <Layout>
+              <LayoutNoSpacer>
                 <Home />
-              </Layout>
+              </LayoutNoSpacer>
             }
           />
         </Routes>

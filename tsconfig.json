@@ -25,9 +25,17 @@
       "@Pages": ["./src/pages"],
       "@Pages/*": ["./src/pages/*"],
       "@Components": ["./src/components"],
-      "@Components/*": ["./src/components/*"]
+      "@Components/*": ["./src/components/*"],
+      "@Clients": ["./src/clients"],
+      "@Clients/*": ["./src/clients/*"],
+      "@Hooks": ["./src/hooks"],
+      "@Hooks/*": ["./src/hooks/*"],
+      "@Utils": ["./src/utils"],
+      "@Utils/*": ["./src/utils/*"],
+      "@Types": ["./src/types"],
+      "@Types/*": ["./src/types/*"],
     }
   },
-  "include": ["src"],
+  "include": ["src", "types"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

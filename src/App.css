@@ -12,6 +12,11 @@
   flex-grow: 1;
 }
 
+.app-spacer {
+  width: 100%;
+  height: 60px;
+}
+
 body {
   padding: 0;
   margin: 0;

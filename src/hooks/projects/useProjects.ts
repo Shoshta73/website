@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import { supabaseClient } from "@Clients";
 
-import { Project } from "@Types/supabase.ts";
+import { Project } from "@Types/custom.supabase.ts";
 import { PostgrestError } from "@supabase/supabase-js";
 import { saveProjects } from "@Utils";
 import saveProjectById from "@Utils/saveProjectById.ts";

@@ -1,4 +1,4 @@
-import { Project } from "@Types/supabase.ts";
+import { Project } from "@Types/custom.supabase.ts";
 
 function loadProjects() : Project[] {
   const savedProjects = sessionStorage.getItem("projects");

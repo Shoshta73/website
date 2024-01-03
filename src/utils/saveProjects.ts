@@ -1,4 +1,4 @@
-import { Project } from "@Types/supabase.ts";
+import { Project } from "@Types/custom.supabase.ts";
 
 async function saveProjects(projects: Project[], key?: string) {
   if (!key) {

@@ -9,7 +9,6 @@ const supabase = createClient<Database>(
 );
 
 async function getProjects() {
-  console.log("called");
   try {
     const { data, error } = await supabase.from("projects").select("*");
 
@@ -21,4 +20,21 @@ async function getProjects() {
   }
 }
 
-export default { getProjects };
+async function getProjectById(id: number) {
+  try {
+    const { data, error } = await supabase
+      .from("projects")
+      .select("*")
+      .eq("id", id)
+      .single();
+
+    if (error) return new Response(JSON.stringify(error));
+
+    console.log("supabase-client: data", data);
+    return new Response(JSON.stringify(data));
+  } catch (error) {
+    return new Response(JSON.stringify(error));
+  }
+}
+
+export default { getProjects, getProjectById };

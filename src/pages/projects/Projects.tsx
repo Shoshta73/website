@@ -3,7 +3,7 @@ import { FC, memo } from "react";
 import { ProjectCard, Spinner } from "@Components";
 import { useSortedProjects } from "@Hooks";
 
-import { Project } from "@Types/supabase.ts";
+import { Project } from "@Types/custom.supabase.ts";
 
 import "./Projects.css";
 

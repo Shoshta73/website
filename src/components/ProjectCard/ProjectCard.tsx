@@ -20,7 +20,7 @@ const ProjectCard: FC<ProjectCardProps> = ({ id, name, image_url }) => {
         } else {
           sessionStorage.setItem("first_visited", id.toString());
         }
-        navigate(`/projects/${id}`);
+        navigate("/project/" + id.toString());
       }}
     >
       <div

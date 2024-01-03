@@ -1,33 +1,27 @@
 import { useEffect, useState } from "react";
 
 import { supabaseClient } from "@Clients";
-import { saveProjects } from "@Utils";
 
 import { Project } from "@Types/custom.supabase.ts";
 import { PostgrestError } from "@supabase/supabase-js";
+import { saveProjects } from "@Utils";
 import saveProjectById from "@Utils/saveProjectById.ts";
 
 export type TState = {
   projects: Project[];
-  previewable: Project[];
-  nonPreviewable: Project[];
-  planned: Project[];
   isLoading: boolean;
   error: null | PostgrestError | unknown;
 };
 
-function useSortedProjects() {
+function useProjects(shouldFetch?: boolean) {
   const [state, setState] = useState<TState>({
     projects: [],
-    previewable: [],
-    nonPreviewable: [],
-    planned: [],
     isLoading: true,
     error: null,
   });
 
   useEffect(() => {
-    const getSortedProjects = async () => {
+    const getProjects = async () => {
       try {
         const response = await supabaseClient.getProjects();
         if (!response.ok) {
@@ -35,24 +29,14 @@ function useSortedProjects() {
           setState((prevState) => ({ ...prevState, error, isLoading: false }));
           return;
         }
-        const projects: Project[] = await response.json();
 
-        const previewable = projects.filter(
-          (project: Project) => project.previewable,
-        );
-        const nonPreviewable = projects.filter(
-          (project: Project) => !project.previewable && !project.planned,
-        );
-        const planned = projects.filter((project: Project) => project.planned);
+        const projects: Project[] = await response.json();
 
         saveProjects(projects);
         saveProjectById(projects);
 
         setState({
           projects,
-          previewable,
-          nonPreviewable,
-          planned,
           isLoading: false,
           error: null,
         });
@@ -61,10 +45,11 @@ function useSortedProjects() {
       }
     };
 
-    getSortedProjects();
-  }, []);
+    if (shouldFetch) getProjects();
+    setState((prevState) => ({ ...prevState, isLoading: false }));
+  }, [shouldFetch]);
 
   return state;
 }
 
-export default useSortedProjects;
+export default useProjects;

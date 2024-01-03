@@ -6,17 +6,6 @@ export type Json =
   | { [key: string]: Json | undefined }
   | Json[];
 
-export type Project = {
-  description: string | null;
-  details: Json | null;
-  id: number;
-  image_url: string;
-  name: string;
-  planned: boolean | null;
-  previewable: boolean | null;
-  version: string | null;
-};
-
 export interface Database {
   public: {
     Tables: {

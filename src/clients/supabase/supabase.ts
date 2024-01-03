@@ -30,7 +30,7 @@ async function getProjectById(id: number) {
 
     if (error) return new Response(JSON.stringify(error));
 
-    console.log ("supabase-client: data", data);
+    console.log("supabase-client: data", data);
     return new Response(JSON.stringify(data));
   } catch (error) {
     return new Response(JSON.stringify(error));

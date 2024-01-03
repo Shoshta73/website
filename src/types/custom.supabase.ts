@@ -13,4 +13,4 @@ export type Details = {
   tech: string[];
   skills: string[];
   languages: string[];
-}
+};

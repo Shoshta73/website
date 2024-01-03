@@ -46,7 +46,7 @@ function useSortedProjects() {
         const planned = projects.filter((project: Project) => project.planned);
 
         saveProjects(projects);
-        saveProjectById(projects)
+        saveProjectById(projects);
 
         setState({
           projects,

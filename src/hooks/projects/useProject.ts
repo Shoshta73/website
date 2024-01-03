@@ -6,7 +6,7 @@ import { Project } from "@Types/custom.supabase.ts";
 import { PostgrestError } from "@supabase/supabase-js";
 
 function useProject(id: number, shouldFetch?: boolean) {
-  const [ project, setProject ] = useState<Project>({
+  const [project, setProject] = useState<Project>({
     description: "",
     details: {
       tech: [],
@@ -20,13 +20,13 @@ function useProject(id: number, shouldFetch?: boolean) {
     previewable: false,
     version: "",
   });
-  const [ isLoading, setIsLoading ] = useState<boolean>(true);
-  const [ error, setError ] = useState<PostgrestError | unknown | null>();
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [error, setError] = useState<PostgrestError | unknown | null>();
 
   useEffect(() => {
     const getProject = async () => {
       try {
-        const response = await supabaseClient.getProjectById(id)
+        const response = await supabaseClient.getProjectById(id);
         if (!response.ok) {
           const error: PostgrestError = await response.json();
           setError(error);
@@ -35,7 +35,7 @@ function useProject(id: number, shouldFetch?: boolean) {
         }
 
         const project: Project = await response.json();
-        setProject(project)
+        setProject(project);
       } catch (error) {
         setError(error);
         setIsLoading(false);
@@ -43,10 +43,10 @@ function useProject(id: number, shouldFetch?: boolean) {
         setIsLoading(false);
       }
     };
-    if(shouldFetch) getProject()
+    if (shouldFetch) getProject();
   }, [shouldFetch]);
 
-  return {project, isLoading, error};
+  return { project, isLoading, error };
 }
 
-export default useProject
+export default useProject;

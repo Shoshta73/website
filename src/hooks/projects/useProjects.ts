@@ -23,7 +23,7 @@ function useProjects(shouldFetch?: boolean) {
   useEffect(() => {
     const getProjects = async () => {
       try {
-        const response = await supabaseClient.getProjects()
+        const response = await supabaseClient.getProjects();
         if (!response.ok) {
           const error: PostgrestError = await response.json();
           setState((prevState) => ({ ...prevState, error, isLoading: false }));
@@ -33,13 +33,13 @@ function useProjects(shouldFetch?: boolean) {
         const projects: Project[] = await response.json();
 
         saveProjects(projects);
-        saveProjectById(projects)
+        saveProjectById(projects);
 
         setState({
           projects,
           isLoading: false,
           error: null,
-        })
+        });
       } catch (error) {
         setState((prevState) => ({ ...prevState, error, isLoading: false }));
       }

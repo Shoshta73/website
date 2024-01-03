@@ -45,6 +45,12 @@ function ProjectDisplay() {
     if (id) fetchProject()
   }, [id, projects]);
 
+  if (error) {
+    console.error(error);
+    // @ts-expect-error TODO fix type - check for error type
+    return <div>Error: {error.message}</div>;
+  }
+
   return (
     <div className="project">
       {isLoading && <Spinner />}

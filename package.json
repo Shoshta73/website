@@ -2,7 +2,7 @@
   "name": "website",
   "version": "0.2.1",
   "type": "module",
-  "packageManager": "pnpm@8.13.1",
+  "packageManager": "pnpm@8.14.0",
   "scripts": {
     "dev": "vite dev --open",
     "build": "tsc && vite build",

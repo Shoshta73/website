@@ -5,6 +5,7 @@ import { saveProjects } from "@Utils";
 
 import { Project } from "@Types/supabase.ts";
 import { PostgrestError } from "@supabase/supabase-js";
+import saveProjectById from "@Utils/saveProjectById.ts";
 
 export type TState = {
   projects: Project[];
@@ -45,6 +46,7 @@ function useSortedProjects() {
         const planned = projects.filter((project: Project) => project.planned);
 
         saveProjects(projects);
+        saveProjectById(projects)
 
         setState({
           projects,

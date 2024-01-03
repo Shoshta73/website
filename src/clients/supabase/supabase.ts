@@ -9,7 +9,6 @@ const supabase = createClient<Database>(
 );
 
 async function getProjects() {
-  console.log("called");
   try {
     const { data, error } = await supabase.from("projects").select("*");
 

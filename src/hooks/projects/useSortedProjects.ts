@@ -45,9 +45,6 @@ function useSortedProjects() {
         const planned = projects.filter((project: Project) => project.planned);
 
         saveProjects(projects);
-        saveProjects(previewable, "previewable_projects");
-        saveProjects(nonPreviewable, "nonPreviewable_projects");
-        saveProjects(planned, "planned_projects");
 
         setState({
           projects,

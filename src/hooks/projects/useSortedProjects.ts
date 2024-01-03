@@ -6,7 +6,7 @@ import { saveProjects } from "@Utils";
 import { Project } from "@Types/supabase.ts";
 import { PostgrestError } from "@supabase/supabase-js";
 
-type TState = {
+export type TState = {
   projects: Project[];
   previewable: Project[];
   nonPreviewable: Project[];

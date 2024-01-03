@@ -11,7 +11,7 @@ import { Project, Details } from "@Types/custom.supabase.ts";
 function ProjectDisplay() {
   const [project, setProject] = useState<Project>();
   const [fetchFromDB, setFetchFromDB] = useState(false);
-  const [ details, setDetails ] = useState<Details>();
+  const [details, setDetails ] = useState<Details>({tech: [], skills: [], languages: []});
   const { id } = useParams();
   const { projects, error, isLoading } = useProjects(fetchFromDB);
 

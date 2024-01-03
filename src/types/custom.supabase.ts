@@ -1,8 +1,6 @@
-import { Json } from "@Types/supabase.ts";
-
 export type Project = {
   description: string | null;
-  details: Json | Details | null;
+  details: Details;
   id: number;
   image_url: string;
   name: string;

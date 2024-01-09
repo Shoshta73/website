@@ -5,6 +5,7 @@ import "./Home.css";
 export const Home = () => {
   return (
     <div className="home">
+      <h1 className="alert">SITE IS WORK IN PROGRESS</h1>
       <div className="about">
         <h2>Hi I am Shoshta</h2>
         <div className="prompt">

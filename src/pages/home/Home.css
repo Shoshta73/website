@@ -24,3 +24,12 @@
   width: 60%;
   font-size: 30px;
 }
+
+.alert {
+  display: flex;
+  margin-top : 80px;
+  align-items: center;
+  justify-content: center;
+  font-size: 80px;
+  color: var(--red);
+}

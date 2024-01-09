@@ -8,6 +8,8 @@ import { loadProjects, loadProjectById } from "@Utils";
 
 import { Project, Details } from "@Types/custom.supabase.ts";
 
+import "./ProjectDisplay.css";
+
 function ProjectDisplay() {
   const [project, setProject] = useState<Project>();
   const [fetchFromDB, setFetchFromDB] = useState(false);

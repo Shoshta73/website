@@ -1,0 +1,22 @@
+name: Backup Gitea
+
+on:
+  push:
+    tags:
+      - "*"
+
+jobs:
+  backuptogitea:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: setup git
+        run: |
+          git config --global user.email "sostaric.borna@hotmail.com"
+          git config --global user.name "Shoshta73"
+          git remote set-url origin https://git:${GITEA_TOKEN}@gitea.com/Shoshta73/website.git
+
+      - name: push
+        run: |
+          git push -f --follow-tags origin main
